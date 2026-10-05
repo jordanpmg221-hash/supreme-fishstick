@@ -1,7 +1,4 @@
-
-  
-  
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -12,12 +9,11 @@
       --bg-color: #0a0f1d;
       --card-bg: #12192c;
       --card-border: rgba(223, 168, 67, 0.2);
-      --gold-primary: #dfa843;
-      --gold-hover: #f1bf63;
+      --primary-accent: #dfa843;
+      --accent-hover: #f1bf63;
       --text-main: #f0f4f8;
       --text-muted: #8a99ad;
       --green-check: #2ecc71;
-      --blue-accent: #3498db;
       --red-missed: #e74c3c;
       --na-gray: #7f8c8d;
       --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -37,7 +33,7 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      padding-bottom: 75px; /* space for mobile navbar */
+      padding-bottom: 75px;
     }
 
     /* HEADER */
@@ -55,7 +51,7 @@
       font-size: 1.4rem;
       font-weight: 800;
       letter-spacing: 2px;
-      color: var(--gold-primary);
+      color: var(--primary-accent);
       text-transform: uppercase;
     }
 
@@ -66,6 +62,16 @@
       letter-spacing: 1px;
     }
 
+    .quote-box {
+      margin-top: 8px;
+      padding: 8px 12px;
+      background: rgba(255, 255, 255, 0.03);
+      border-left: 3px solid var(--primary-accent);
+      border-radius: 4px;
+      font-style: italic;
+      font-size: 0.8rem;
+    }
+
     .clock-box {
       margin-top: 10px;
     }
@@ -73,13 +79,12 @@
     .time-display {
       font-size: 1.5rem;
       font-weight: 700;
-      color: var(--text-main);
       font-variant-numeric: tabular-nums;
     }
 
     .date-display {
       font-size: 0.85rem;
-      color: var(--gold-primary);
+      color: var(--primary-accent);
       margin-top: 2px;
     }
 
@@ -102,9 +107,9 @@
     }
 
     .card-title {
-      font-size: 1rem;
+      font-size: 0.95rem;
       font-weight: 700;
-      color: var(--gold-primary);
+      color: var(--primary-accent);
       text-transform: uppercase;
       letter-spacing: 1px;
       margin-bottom: 12px;
@@ -113,7 +118,42 @@
       align-items: center;
     }
 
-    /* TIME PROGRESSION BAR */
+    /* GAMIFICATION HEADER CARD */
+    .gamify-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .rank-badge {
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: var(--bg-color);
+      background: var(--primary-accent);
+      padding: 4px 10px;
+      border-radius: 20px;
+      text-transform: uppercase;
+    }
+
+    .streak-badge {
+      font-size: 1rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .streak-badge.active {
+      color: #ff9f43;
+    }
+
+    .streak-badge.inactive {
+      color: var(--text-muted);
+      filter: grayscale(1);
+    }
+
+    /* PROGRESS BARS */
     .progress-info {
       display: flex;
       justify-content: space-between;
@@ -131,19 +171,32 @@
     }
 
     .progress-bar-fill {
-      background: linear-gradient(90deg, var(--gold-primary), var(--gold-hover));
+      background: linear-gradient(90deg, var(--primary-accent), var(--accent-hover));
       height: 100%;
       width: 0%;
       transition: width 0.4s ease;
     }
 
-    .progress-subtext {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      text-align: right;
+    /* GITHUB STYLE HEATMAP GRID */
+    .heatmap-grid {
+      display: grid;
+      grid-template-columns: repeat(14, 1fr);
+      gap: 4px;
+      margin-top: 10px;
     }
 
-    /* DATE SELECTOR */
+    .heatmap-cell {
+      aspect-ratio: 1;
+      border-radius: 3px;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .heatmap-cell.level-0 { background: rgba(255, 255, 255, 0.05); }
+    .heatmap-cell.level-1 { background: rgba(46, 204, 113, 0.3); }
+    .heatmap-cell.level-2 { background: rgba(46, 204, 113, 0.6); }
+    .heatmap-cell.level-3 { background: rgba(46, 204, 113, 1.0); }
+
+    /* CHECKLIST */
     .date-picker-row {
       display: flex;
       align-items: center;
@@ -165,7 +218,7 @@
     }
 
     .btn-today {
-      background: var(--gold-primary);
+      background: var(--primary-accent);
       color: var(--bg-color);
       border: none;
       padding: 6px 12px;
@@ -175,15 +228,14 @@
       cursor: pointer;
     }
 
-    /* CHECKLIST */
     .category-header {
       font-size: 0.85rem;
       font-weight: 700;
-      color: var(--gold-primary);
+      color: var(--primary-accent);
       text-transform: uppercase;
       letter-spacing: 1px;
       margin: 14px 0 8px 0;
-      border-bottom: 1px solid rgba(223, 168, 67, 0.15);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
       padding-bottom: 4px;
     }
 
@@ -235,7 +287,6 @@
 
     .task-title {
       font-size: 0.95rem;
-      color: var(--text-main);
     }
 
     .task-title.completed {
@@ -271,12 +322,12 @@
 
     .task-note-indicator {
       font-size: 0.75rem;
-      color: var(--gold-primary);
+      color: var(--primary-accent);
       margin-top: 4px;
       font-style: italic;
     }
 
-    /* STATS & PROGRESS PAGE */
+    /* STATS ROW */
     .stat-row {
       display: flex;
       justify-content: space-between;
@@ -287,21 +338,38 @@
 
     .stat-label {
       font-size: 0.9rem;
-      color: var(--text-main);
     }
 
     .stat-value {
       font-size: 0.9rem;
       font-weight: 700;
-      color: var(--gold-primary);
+      color: var(--primary-accent);
     }
 
-    /* BOTTOM NAVIGATION */
+    /* THEME PICKER */
+    .theme-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .btn-theme {
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid var(--card-border);
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--text-main);
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    /* BOTTOM NAV */
     .bottom-nav {
       position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
+      bottom: 0; left: 0; right: 0;
       height: 60px;
       background-color: var(--card-bg);
       border-top: 1px solid var(--card-border);
@@ -317,15 +385,14 @@
       align-items: center;
       color: var(--text-muted);
       font-size: 0.7rem;
-      text-decoration: none;
       background: none;
       border: none;
       cursor: pointer;
-      width: 25%;
+      width: 33%;
     }
 
     .nav-item.active {
-      color: var(--gold-primary);
+      color: var(--primary-accent);
       font-weight: 700;
     }
 
@@ -334,11 +401,10 @@
       margin-bottom: 2px;
     }
 
-    /* SETTINGS BUTTONS */
     .btn-action {
       background: var(--card-bg);
-      border: 1px solid var(--gold-primary);
-      color: var(--gold-primary);
+      border: 1px solid var(--primary-accent);
+      color: var(--primary-accent);
       padding: 10px 16px;
       border-radius: 8px;
       font-weight: 600;
@@ -346,12 +412,6 @@
       cursor: pointer;
       width: 100%;
       margin-bottom: 10px;
-      text-align: center;
-    }
-
-    .btn-action:hover {
-      background: var(--gold-primary);
-      color: var(--bg-color);
     }
 
     /* MODAL */
@@ -366,9 +426,7 @@
       padding: 16px;
     }
 
-    .modal.active {
-      display: flex;
-    }
+    .modal.active { display: flex; }
 
     .modal-content {
       background: var(--card-bg);
@@ -381,7 +439,7 @@
 
     .modal-title {
       font-size: 1.1rem;
-      color: var(--gold-primary);
+      color: var(--primary-accent);
       margin-bottom: 12px;
     }
 
@@ -402,13 +460,8 @@
       justify-content: flex-end;
     }
 
-    .page {
-      display: none;
-    }
-
-    .page.active {
-      display: block;
-    }
+    .page { display: none; }
+    .page.active { display: block; }
   </style>
 </head>
 <body>
@@ -416,10 +469,13 @@
   <!-- HEADER -->
   <header>
     <div class="app-title">MT LEVELING</div>
-    <div class="app-subtitle">SEP 01 2026 → MAR 31 2027</div>
+    <div class="app-subtitle">OCT 05 2026 → MAR 31 2027</div>
+    
+    <div class="quote-box" id="quoteDisplay">"Discipline equals freedom."</div>
+
     <div class="clock-box">
       <div id="clockTime" class="time-display">00:00:00</div>
-      <div id="clockDate" class="date-display">Monday, 01 Sep 2026</div>
+      <div id="clockDate" class="date-display">Monday, 05 Oct 2026</div>
     </div>
   </header>
 
@@ -428,6 +484,28 @@
     <!-- PAGE: HOME & TODAY -->
     <div id="pageToday" class="page active">
       
+      <!-- LEVEL & STREAK CARD -->
+      <div class="card">
+        <div class="gamify-row">
+          <div>
+            <span style="font-size:0.75rem; color:var(--text-muted);">CURRENT RANK</span>
+            <div id="rankText" class="rank-badge" style="margin-top:2px;">NOVICE</div>
+          </div>
+          <div id="streakBadge" class="streak-badge inactive">
+            <span id="streakIcon">🔥</span>
+            <span id="streakText">0 DAYS</span>
+          </div>
+        </div>
+
+        <div class="progress-info">
+          <span id="levelText">LEVEL 1 (0 XP)</span>
+          <span id="nextLevelText">NEXT: 100 XP</span>
+        </div>
+        <div class="progress-bar-bg">
+          <div id="xpProgressBar" class="progress-bar-fill"></div>
+        </div>
+      </div>
+
       <!-- TIME PROGRESSION CARD -->
       <div class="card">
         <div class="card-title">
@@ -438,12 +516,12 @@
           <div id="timeProgressBar" class="progress-bar-fill"></div>
         </div>
         <div class="progress-info">
-          <span id="dayCurrentText">DAY 1 OF 212</span>
-          <span id="daysLeftText">211 DAYS LEFT</span>
+          <span id="dayCurrentText">DAY 1 OF 178</span>
+          <span id="daysLeftText">177 DAYS LEFT</span>
         </div>
       </div>
 
-      <!-- DAILY SCORE CARD -->
+      <!-- TODAY CHECKLIST CARD -->
       <div class="card">
         <div class="card-title">
           <span>TODAY'S SCORE</span>
@@ -452,18 +530,13 @@
         <div class="progress-bar-bg">
           <div id="dailyScoreBar" class="progress-bar-fill" style="background: var(--green-check);"></div>
         </div>
-      </div>
 
-      <!-- TODAY CHECKLIST CARD -->
-      <div class="card">
         <div class="date-picker-row">
           <input type="date" id="selectedDatePicker">
           <button class="btn-today" onclick="setPickerToToday()">TODAY</button>
         </div>
 
-        <div id="checklistContainer">
-          <!-- Tasks dynamically generated -->
-        </div>
+        <div id="checklistContainer"></div>
       </div>
 
     </div>
@@ -471,26 +544,36 @@
     <!-- PAGE: PROGRESS & HABITS -->
     <div id="pageProgress" class="page">
       <div class="card">
-        <div class="card-title">HABIT REGULARITY</div>
-        <div id="habitStatsContainer">
-          <!-- Habit Stats generated dynamically -->
-        </div>
+        <div class="card-title">CONSISTENCY HEATMAP (28 DAYS)</div>
+        <div id="heatmapGrid" class="heatmap-grid"></div>
       </div>
 
       <div class="card">
-        <div class="card-title">RECENT DAYS HISTORY</div>
-        <div id="historyContainer">
-          <!-- History generated dynamically -->
-        </div>
+        <div class="card-title">HABIT REGULARITY</div>
+        <div id="habitStatsContainer"></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">RECENT HISTORY</div>
+        <div id="historyContainer"></div>
       </div>
     </div>
 
-    <!-- PAGE: SETTINGS & BACKUP -->
+    <!-- PAGE: SETTINGS & THEMES -->
     <div id="pageSettings" class="page">
+      <div class="card">
+        <div class="card-title">COLOR THEME</div>
+        <div class="theme-grid">
+          <button class="btn-theme" style="border-color:#dfa843; color:#dfa843;" onclick="setTheme('gold')">GOLD</button>
+          <button class="btn-theme" style="border-color:#3498db; color:#3498db;" onclick="setTheme('neon-blue')">NEON BLUE</button>
+          <button class="btn-theme" style="border-color:#2ecc71; color:#2ecc71;" onclick="setTheme('emerald')">EMERALD</button>
+        </div>
+      </div>
+
       <div class="card">
         <div class="card-title">DATA MANAGEMENT</div>
         <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:14px;">
-          Your data is saved locally on this browser/device. Export your backup file regularly to keep your progress safe or transfer it to another device.
+          Export backup files regularly to keep progress safe across devices.
         </p>
         <button class="btn-action" onclick="exportData()">EXPORT BACKUP (JSON)</button>
         <button class="btn-action" onclick="document.getElementById('importFileInput').click()">IMPORT BACKUP (JSON)</button>
@@ -513,7 +596,7 @@
     </div>
   </div>
 
-  <!-- BOTTOM NAVIGATION -->
+  <!-- BOTTOM NAV -->
   <nav class="bottom-nav">
     <button class="nav-item active" onclick="switchPage('pageToday', this)">
       <span class="nav-icon">✅</span>
@@ -530,8 +613,23 @@
   </nav>
 
   <script>
-    // CORE CONSTANTS & DEFAULT TASKS
-    const START_DATE = new Date("2026-09-01T00:00:00");
+    const MOTIVATIONAL_QUOTES = [
+      "Le succès est la somme de petits efforts répétés jour après jour.",
+      "Discipline equals freedom.",
+      "Ne cherche pas à être parfait, cherche à être constant.",
+      "Chaque effort compte, même quand personne ne regarde.",
+      "Le futur appartient à ceux qui se préparent aujourd'hui.",
+      "Fais aujourd'hui ce que d'autres ne font pas, pour avoir demain ce que d'autres n'auront pas.",
+      "La constance transforme la moyenne en excellence.",
+      "Ne renonce pas à ce que tu veux le plus pour ce que tu veux maintenant.",
+      "Ton seul rival est celui que tu étais hier.",
+      "La douleur de la discipline est bien moindre que celle du regret.",
+      "Focalise-toi sur le processus, les résultats suivront.",
+      "Un petit pas chaque jour mène à de grands changements.",
+      "Sois plus fort que ta meilleure excuse."
+    ];
+
+    const START_DATE = new Date("2026-10-05T00:00:00");
     const END_DATE = new Date("2027-03-31T23:59:59");
     
     const DEFAULT_TASKS = [
@@ -547,10 +645,16 @@
       { id: "journaling", title: "Q&A Journaling / Intellectual Sanctuary", category: "LIFE", priority: "SHOULD DO" }
     ];
 
-    // STATE STORAGE (Updated key for MT LEVELING)
-    let appData = JSON.parse(localStorage.getItem("MT_LEVELING_DATA")) || 
-                  JSON.parse(localStorage.getItem("DON_LEVELING_DATA")) || {
-      logs: {} // format: { "YYYY-MM-DD": { taskId: { status: "CHECKED"|"NA"|"UNCHECKED", note: "" } } }
+    const RANKS = [
+      { minLvl: 1, title: "NOVICE" },
+      { minLvl: 5, title: "APPRENTICE" },
+      { minLvl: 10, title: "SHADOW KNIGHT" },
+      { minLvl: 20, title: "SHADOW MONARCH" }
+    ];
+
+    let appData = JSON.parse(localStorage.getItem("MT_LEVELING_DATA")) || {
+      theme: "gold",
+      logs: {}
     };
 
     let activeTaskIdForNote = null;
@@ -559,14 +663,42 @@
       localStorage.setItem("MT_LEVELING_DATA", JSON.stringify(appData));
     }
 
-    // CLOCK & TIME PROGRESSION
+    // THEME SYSTEM
+    function setTheme(themeName) {
+      appData.theme = themeName;
+      saveData();
+      
+      const root = document.documentElement;
+      if (themeName === "neon-blue") {
+        root.style.setProperty('--primary-accent', '#3498db');
+        root.style.setProperty('--accent-hover', '#5adeff');
+        root.style.setProperty('--card-border', 'rgba(52, 152, 219, 0.25)');
+      } else if (themeName === "emerald") {
+        root.style.setProperty('--primary-accent', '#2ecc71');
+        root.style.setProperty('--accent-hover', '#58d68d');
+        root.style.setProperty('--card-border', 'rgba(46, 204, 113, 0.25)');
+      } else {
+        root.style.setProperty('--primary-accent', '#dfa843');
+        root.style.setProperty('--accent-hover', '#f1bf63');
+        root.style.setProperty('--card-border', 'rgba(223, 168, 67, 0.2)');
+      }
+    }
+
+    function updateDailyQuote() {
+      const now = new Date();
+      const start = new Date(now.getFullYear(), 0, 0);
+      const diff = now - start;
+      const oneDay = 1000 * 60 * 60 * 24;
+      const dayOfYear = Math.floor(diff / oneDay);
+      const quoteIndex = dayOfYear % MOTIVATIONAL_QUOTES.length;
+      document.getElementById("quoteDisplay").innerText = `"${MOTIVATIONAL_QUOTES[quoteIndex]}"`;
+    }
+
     function updateClock() {
       const now = new Date();
       document.getElementById("clockTime").innerText = now.toLocaleTimeString("en-US", { hour12: false });
-      
       const options = { weekday: 'long', year: 'numeric', month: 'short', day: '2-digit' };
       document.getElementById("clockDate").innerText = now.toLocaleDateString("en-US", options);
-
       updateTimeProgression(now);
     }
 
@@ -579,13 +711,9 @@
       let daysLeft = totalDays;
 
       if (now < START_DATE) {
-        percent = 0;
-        elapsedDays = 0;
-        daysLeft = totalDays;
+        percent = 0; elapsedDays = 1; daysLeft = totalDays;
       } else if (now > END_DATE) {
-        percent = 100;
-        elapsedDays = totalDays;
-        daysLeft = 0;
+        percent = 100; elapsedDays = totalDays; daysLeft = 0;
       } else {
         const diffTime = now - START_DATE;
         elapsedDays = Math.floor(diffTime / (1000 * 60 * 60 * 24)) + 1;
@@ -599,7 +727,86 @@
       document.getElementById("daysLeftText").innerText = `${daysLeft} DAYS LEFT`;
     }
 
-    // DATE HELPER
+    // GAMIFICATION & STREAK LOGIC
+    function calculateGamification() {
+      let totalXP = 0;
+      const mustDoTasks = DEFAULT_TASKS.filter(t => t.priority === "MUST DO");
+
+      // Calculate total XP from logs
+      Object.keys(appData.logs).forEach(date => {
+        const dayLog = appData.logs[date];
+        DEFAULT_TASKS.forEach(task => {
+          if (dayLog[task.id]?.status === "CHECKED") {
+            totalXP += (task.priority === "MUST DO") ? 15 : 10;
+          }
+        });
+      });
+
+      // Calculate Level & Rank
+      const level = Math.floor(totalXP / 100) + 1;
+      const currentLevelXP = totalXP % 100;
+
+      let currentRank = "NOVICE";
+      RANKS.forEach(r => {
+        if (level >= r.minLvl) currentRank = r.title;
+      });
+
+      document.getElementById("rankText").innerText = currentRank;
+      document.getElementById("levelText").innerText = `LEVEL ${level} (${totalXP} XP)`;
+      document.getElementById("nextLevelText").innerText = `NEXT: ${100 - currentLevelXP} XP`;
+      document.getElementById("xpProgressBar").style.width = `${currentLevelXP}%`;
+
+      // CALCULATE STREAK
+      // Flame dies if ANY MUST DO task is missed on a given completed day up to yesterday
+      let currentStreak = 0;
+      const todayStr = new Date().toISOString().split('T')[0];
+      
+      let checkDate = new Date();
+      let streakActive = true;
+
+      while (streakActive) {
+        const dStr = checkDate.toISOString().split('T')[0];
+        const dayLog = appData.logs[dStr];
+
+        if (!dayLog && dStr !== todayStr) {
+          // Break streak if a past day was completely skipped
+          streakActive = false;
+          break;
+        }
+
+        if (dayLog) {
+          // Check if all MUST DO tasks were completed or N/A
+          let daySuccess = mustDoTasks.every(t => {
+            const status = dayLog[t.id]?.status;
+            return status === "CHECKED" || status === "NA";
+          });
+
+          if (daySuccess) {
+            currentStreak++;
+          } else if (dStr !== todayStr) {
+            // Unfilled MUST DO box on a past day extinguishes the flame
+            streakActive = false;
+            break;
+          }
+        }
+
+        // Move to previous day
+        checkDate.setDate(checkDate.getDate() - 1);
+        if (checkDate < START_DATE) break;
+      }
+
+      const streakBadge = document.getElementById("streakBadge");
+      const streakText = document.getElementById("streakText");
+
+      if (currentStreak > 0) {
+        streakBadge.className = "streak-badge active";
+        streakText.innerText = `${currentStreak} DAY${currentStreak > 1 ? 'S' : ''}`;
+      } else {
+        streakBadge.className = "streak-badge inactive";
+        streakText.innerText = "0 DAYS";
+      }
+    }
+
     function getSelectedDateStr() {
       return document.getElementById("selectedDatePicker").value;
     }
@@ -610,7 +817,6 @@
       renderChecklist();
     }
 
-    // RENDER CHECKLIST
     function renderChecklist() {
       const dateStr = getSelectedDateStr();
       const container = document.getElementById("checklistContainer");
@@ -650,13 +856,9 @@
           let titleClass = "";
 
           if (taskState.status === "CHECKED") {
-            checkClass = "checked";
-            checkSymbol = "✓";
-            titleClass = "completed";
+            checkClass = "checked"; checkSymbol = "✓"; titleClass = "completed";
           } else if (taskState.status === "NA") {
-            checkClass = "na";
-            checkSymbol = "N/A";
-            titleClass = "na-text";
+            checkClass = "na"; checkSymbol = "N/A"; titleClass = "na-text";
           }
 
           taskEl.innerHTML = `
@@ -676,14 +878,14 @@
         });
       });
 
-      // UPDATE DAILY SCORE
       const activeTotal = totalTasks - naTasks;
       const scorePercent = activeTotal > 0 ? Math.round((completedTasks / activeTotal) * 100) : 0;
       document.getElementById("dailyScoreText").innerText = `${completedTasks} / ${activeTotal} (${scorePercent}%)`;
       document.getElementById("dailyScoreBar").style.width = `${scorePercent}%`;
+
+      calculateGamification();
     }
 
-    // TASK INTERACTION HANDLERS
     function toggleTask(taskId) {
       const dateStr = getSelectedDateStr();
       if (!appData.logs[dateStr]) appData.logs[dateStr] = {};
@@ -698,7 +900,7 @@
       
       saveData();
       renderChecklist();
-      renderHabitStats();
+      renderProgressPage();
     }
 
     function toggleNA(taskId) {
@@ -715,10 +917,9 @@
 
       saveData();
       renderChecklist();
-      renderHabitStats();
+      renderProgressPage();
     }
 
-    // NOTE MODAL HANDLERS
     function openNoteModal(taskId) {
       activeTaskIdForNote = taskId;
       const dateStr = getSelectedDateStr();
@@ -748,7 +949,46 @@
       renderChecklist();
     }
 
-    // RENDER HABIT STATS & STREAKS
+    // RENDER PROGRESS PAGE (HEATMAP & STATS)
+    function renderProgressPage() {
+      renderHeatmap();
+      renderHabitStats();
+    }
+
+    function renderHeatmap() {
+      const grid = document.getElementById("heatmapGrid");
+      if (!grid) return;
+      grid.innerHTML = "";
+
+      const days = 28;
+      const today = new Date();
+
+      for (let i = days - 1; i >= 0; i--) {
+        const d = new Date(today);
+        d.setDate(d.getDate() - i);
+        const dStr = d.toISOString().split('T')[0];
+
+        const dayLog = appData.logs[dStr];
+        let levelClass = "level-0";
+
+        if (dayLog) {
+          let count = 0;
+          DEFAULT_TASKS.forEach(t => {
+            if (dayLog[t.id]?.status === "CHECKED") count++;
+          });
+
+          if (count >= 8) levelClass = "level-3";
+          else if (count >= 5) levelClass = "level-2";
+          else if (count >= 1) levelClass = "level-1";
+        }
+
+        const cell = document.createElement("div");
+        cell.className = `heatmap-cell ${levelClass}`;
+        cell.title = `${dStr}`;
+        grid.appendChild(cell);
+      }
+    }
+
     function renderHabitStats() {
       const habitContainer = document.getElementById("habitStatsContainer");
       const historyContainer = document.getElementById("historyContainer");
@@ -767,8 +1007,7 @@
         dateKeys.forEach(d => {
           const entry = appData.logs[d]?.[task.id];
           if (entry?.status === "CHECKED") {
-            completed++;
-            streak++;
+            completed++; streak++;
           } else if (entry?.status === "NA") {
             naCount++;
           } else {
@@ -788,7 +1027,6 @@
         habitContainer.appendChild(row);
       });
 
-      // RECENT DAYS LOG
       const recentDates = dateKeys.slice(-5).reverse();
       if (recentDates.length === 0) {
         historyContainer.innerHTML = `<div style="font-size:0.85rem; color:var(--text-muted);">No history recorded yet.</div>`;
@@ -813,7 +1051,6 @@
       }
     }
 
-    // PAGE SWITCHING
     function switchPage(pageId, navBtn) {
       document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
       document.querySelectorAll(".nav-item").forEach(n => n.classList.remove("active"));
@@ -822,11 +1059,10 @@
       navBtn.classList.add("active");
 
       if (pageId === "pageProgress") {
-        renderHabitStats();
+        renderProgressPage();
       }
     }
 
-    // EXPORT / IMPORT / RESET
     function exportData() {
       const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(appData, null, 2));
       const downloadAnchor = document.createElement('a');
@@ -848,8 +1084,9 @@
           if (imported && imported.logs) {
             appData = imported;
             saveData();
+            setTheme(appData.theme || 'gold');
             renderChecklist();
-            renderHabitStats();
+            renderProgressPage();
             alert("Backup restored successfully!");
           } else {
             alert("Invalid backup file format.");
@@ -864,20 +1101,20 @@
     function clearAllData() {
       if (confirm("Are you sure you want to reset all tracking data? This cannot be undone.")) {
         localStorage.removeItem("MT_LEVELING_DATA");
-        localStorage.removeItem("DON_LEVELING_DATA");
-        appData = { logs: {} };
+        appData = { theme: "gold", logs: {} };
         renderChecklist();
-        renderHabitStats();
+        renderProgressPage();
         alert("All data cleared.");
       }
     }
 
-    // INITIALIZATION
     window.onload = function() {
+      setTheme(appData.theme || 'gold');
       setPickerToToday();
+      updateDailyQuote();
       setInterval(updateClock, 1000);
       updateClock();
-      renderHabitStats();
+      renderProgressPage();
     };
   </script>
 </body>
